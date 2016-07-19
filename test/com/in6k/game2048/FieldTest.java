@@ -15,9 +15,16 @@ public class FieldTest {
     }
 
     @Test
+    public void isRandomValueAdded() throws Exception {
+        int numberOfNonEmptyCells = getNumberOfNonEmptyCells();
+        field.addRandomCell();
+        assertThat(numberOfNonEmptyCells+1, is(getNumberOfNonEmptyCells()));
+    }
+
+    @Test
     public void isFieldGeneratedWithTwoNonEmptyCells() throws Exception {
-        int numberOfCell = getNumberOfNonEmptyCells();
-        assertThat(numberOfCell, is(2));
+        int numberOfNonEmptyCells = getNumberOfNonEmptyCells();
+        assertThat(numberOfNonEmptyCells, is(2));
     }
 
     private int getNumberOfNonEmptyCells() {

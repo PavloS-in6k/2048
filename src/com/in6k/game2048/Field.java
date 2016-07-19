@@ -25,17 +25,23 @@ public class Field {
                 field.get(i).add(new Cell());
             }
         }
-        addFirstTwoCells();
+        addRandomCell();
+        addRandomCell();
     }
 
-    private void addFirstTwoCells() {
+    protected void addRandomCell() {
+        int i = getAnRandomCoordForTable();
+        int k = getAnRandomCoordForTable();
+        while (field.get(i).get(k).getValue() != 0) {
+            i = getAnRandomCoordForTable();
+            k = getAnRandomCoordForTable();
+        }
+        field.get(i).set(k, generateNewValueCell());
+    }
+
+    private int getAnRandomCoordForTable() {
         Random random = new Random();
-        int i = random.nextInt(FIELD_LENGTH - 1);
-        int k = random.nextInt(FIELD_LENGTH - 1);
-        field.get(i).set(k, generateNewValueCell());
-        i = random.nextInt(FIELD_LENGTH - 1);
-        k = random.nextInt(FIELD_LENGTH - 1);
-        field.get(i).set(k, generateNewValueCell());
+        return random.nextInt(FIELD_LENGTH - 1);
     }
 
     protected Cell generateEmptyCell() {
