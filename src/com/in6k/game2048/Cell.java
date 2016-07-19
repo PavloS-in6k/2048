@@ -9,7 +9,7 @@ public class Cell {
         value = 0;
     }
 
-    Cell(int value) {
+    protected Cell(int value) {
         this.value = value;
     }
 
@@ -36,4 +36,6 @@ public class Cell {
         }
         return cell;
     }
+
+
 }

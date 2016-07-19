@@ -14,7 +14,7 @@ public class Main {
         Controller controller = new Controller(field);
         String command;
         while (true) {
-            System.out.print("Enter slide: \"s\" for down slide, \"w\" - up slide, \"d\" - right slide, " +
+            System.out.print("Enter slide : \"s\" for down slide, \"w\" - up slide, \"d\" - right slide, " +
                     "\"a\" - left slide or \"e\" for exit: ");
             command = sc.next();
             if (command.equals("e"))
