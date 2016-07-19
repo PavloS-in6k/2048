@@ -1,13 +1,18 @@
 package com.in6k.game2048;
 
 public class Cell {
-    private int value = 2;
+    private int value;
 
     Cell() {
+        value = 0;
     }
 
     public void increment() {
-        value *= 2;
+        if (value == 0) {
+            value = 2;
+        } else {
+            value *= 2;
+        }
     }
 
     public int getValue() {

@@ -15,10 +15,9 @@ public class CellTest {
     }
 
     @Test
-    public void isIncrementWorking() throws Exception {
+    public void isFirstCallOfIncrementWorking() throws Exception {
+        assertThat(cell.getValue(), is(0));
         cell.increment();
-        assertThat(cell.getValue(), is(4));
+        assertThat(cell.getValue(), is(2));
     }
-
-
 }
