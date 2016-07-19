@@ -22,6 +22,7 @@ public class CellTest {
     @Test
     public void isFirstCallOfIncrementWorking() throws Exception {
         assertThat(cell.getValue(), is(0));
-        assertThat(cell.increment().getValue(), is(2));
+        cell.increment();
+        assertThat(cell.getValue(), is(2));
     }
 }

@@ -23,7 +23,7 @@ public class ControllerTest {
     @Test
     public void isSlideWorksWithBoundValues() throws Exception {
         List<Cell> row = Arrays.asList(new Cell(), new Cell(), new Cell(2), new Cell(2));
-        controller.slide(row);
+        controller.slideOneRow(row);
         assertThat(row.get(Field.FIELD_LENGTH - 1).getValue(), is(4));
     }
 

@@ -13,8 +13,9 @@ public class Main {
         Field field = new Field();
         Controller controller = new Controller(field);
         String command;
+        System.out.print(field.getFieldView());
         while (true) {
-            System.out.print("Enter slide : \"s\" for down slide, \"w\" - up slide, \"d\" - right slide, " +
+            System.out.println("Enter w,a,s,or d for slide : \"s\" for down slide, \"w\" - up slide, \"d\" - right slide, " +
                     "\"a\" - left slide or \"e\" for exit: ");
             command = sc.next();
             if (command.equals("e"))
@@ -31,7 +32,7 @@ public class Main {
             if (command.equals("d")) {
                 controller.doSlide(Command.SLIDE_RIGTH);
             }
-            System.out.print(field.getFieldViev());
+            System.out.print(field.getFieldView());
         }
     }
 }
