@@ -18,7 +18,7 @@ public class FieldTest {
     public void isRandomValueAdded() throws Exception {
         int numberOfNonEmptyCells = getNumberOfNonEmptyCells();
         field.addRandomCell();
-        assertThat(numberOfNonEmptyCells+1, is(getNumberOfNonEmptyCells()));
+        assertThat(numberOfNonEmptyCells + 1, is(getNumberOfNonEmptyCells()));
     }
 
     @Test

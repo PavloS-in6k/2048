@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static com.in6k.game2048.Cell.generateNewRandomValueCell;
+
 public class Field {
     private List<List<Cell>> field;
     public static final int FIELD_LENGTH = 4;
@@ -36,27 +38,18 @@ public class Field {
             i = getAnRandomCoordForTable();
             k = getAnRandomCoordForTable();
         }
-        field.get(i).set(k, generateNewValueCell());
+        field.get(i).set(k, generateNewRandomValueCell());
     }
 
     private int getAnRandomCoordForTable() {
         Random random = new Random();
-        return random.nextInt(FIELD_LENGTH - 1);
+        return random.nextInt(FIELD_LENGTH);
     }
 
     protected Cell generateEmptyCell() {
         return new Cell();
     }
 
-    protected Cell generateNewValueCell() {
-        Cell cell = new Cell();
-        cell.increment();
-        Random random = new Random();
-        if (random.nextInt(3) == 3) {
-            cell.increment();
-        }
-        return cell;
-    }
 
     public String getFieldViev() {
         String fieldViev = "";
