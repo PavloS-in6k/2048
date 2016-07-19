@@ -8,8 +8,9 @@ public class Field {
     private List<List<Cell>> field;
     public static final int FIELD_LENGTH = 4;
 
-    Field() {
+    public Field() {
         field = new ArrayList<>();
+        generateNewField();
     }
 
     public List<List<Cell>> getField() {
@@ -25,13 +26,16 @@ public class Field {
             }
         }
         addFirstTwoCells();
-
     }
 
     private void addFirstTwoCells() {
         Random random = new Random();
-        field.get(random.nextInt(FIELD_LENGTH-1)).set(random.nextInt(FIELD_LENGTH-1), generateNewValueCell());
-        field.get(random.nextInt(FIELD_LENGTH-1)).set(random.nextInt(FIELD_LENGTH-1), generateNewValueCell());
+        int i = random.nextInt(FIELD_LENGTH - 1);
+        int k = random.nextInt(FIELD_LENGTH - 1);
+        field.get(i).set(k, generateNewValueCell());
+        i = random.nextInt(FIELD_LENGTH - 1);
+        k = random.nextInt(FIELD_LENGTH - 1);
+        field.get(i).set(k, generateNewValueCell());
     }
 
     protected Cell generateEmptyCell() {
@@ -42,9 +46,21 @@ public class Field {
         Cell cell = new Cell();
         cell.increment();
         Random random = new Random();
-        if (random.nextInt(4) == 3) {
+        if (random.nextInt(3) == 3) {
             cell.increment();
         }
         return cell;
+    }
+
+    public String getFieldViev() {
+        String fieldViev = "";
+        String delimeter = "\n";
+        for (int i = 0; i < FIELD_LENGTH; i++) {
+            for (int k = 0; k < FIELD_LENGTH; k++) {
+                fieldViev += field.get(i).get(k).getValue() + "\t";
+            }
+            fieldViev += delimeter;
+        }
+        return fieldViev;
     }
 }

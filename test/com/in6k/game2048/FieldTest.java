@@ -7,25 +7,32 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 public class FieldTest {
-    private Field field = new Field();
+    private Field field;
 
     @Before
     public void setUp() throws Exception {
-
-
+        field = new Field();
     }
 
     @Test
-    public void isFieldGeneratedRigth() throws Exception {
-        field.generateNewField();
+    public void isFieldGeneratedWithTwoNonEmptyCells() throws Exception {
+        int numberOfCell = getNumberOfNonEmptyCells();
+        assertThat(numberOfCell, is(2));
+    }
+
+    private int getNumberOfNonEmptyCells() {
         int numberOfCell = 0;
         for (int i = 0; i < Field.FIELD_LENGTH; i++) {
             for (int k = 0; k < Field.FIELD_LENGTH; k++) {
-                if (field.getField().get(i).get(k).getValue() == 2) {
+                if (isCellNotEmpty(i, k)) {
                     numberOfCell++;
                 }
             }
         }
-        assertThat(numberOfCell, is(2));
+        return numberOfCell;
+    }
+
+    private boolean isCellNotEmpty(int i, int k) {
+        return field.getField().get(i).get(k).getValue() != 0;
     }
 }

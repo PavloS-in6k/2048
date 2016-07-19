@@ -15,6 +15,11 @@ public class CellTest {
     }
 
     @Test
+    public void isFirstValueIsZero() throws Exception {
+        assertThat(cell.getValue(), is(0));
+    }
+
+    @Test
     public void isFirstCallOfIncrementWorking() throws Exception {
         assertThat(cell.getValue(), is(0));
         cell.increment();
