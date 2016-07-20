@@ -74,7 +74,6 @@ public class FieldTest {
                         8, 4, 0, 0
                 )
         );
-
         assertThat(field.getCellsValuesAsList(), contains(
                 0, 2, 0, 2,
                 4, 0, 2, 2,
