@@ -126,6 +126,47 @@ public class ControllerTest {
         ));
     }
 
+    @Test
+    public void isRightSlideWorking() throws Exception {
+        setEtalonField();
+
+        controller.doSlide(Command.SLIDE_RIGTH);
+
+        assertThat(controller.getField().getCellsValuesAsList(), contains(
+                0, 0, 0, 4,
+                0, 0, 0, 2,
+                0, 0, 4, 2,
+                0, 0, 0, 4
+        ));
+    }
+
+    @Test
+    public void isUpSlideWorking() throws Exception {
+        setEtalonField();
+
+        controller.doSlide(Command.SLIDE_UP);
+
+        assertThat(controller.getField().getCellsValuesAsList(), contains(
+                2, 2, 4, 4,
+                0, 4, 0, 0,
+                0, 0, 0, 0,
+                0, 0, 0, 0
+        ));
+    }
+
+    @Test
+    public void isDownSlideWorking() throws Exception {
+        setEtalonField();
+
+        controller.doSlide(Command.SLIDE_DOWN);
+
+        assertThat(controller.getField().getCellsValuesAsList(), contains(
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 2, 0, 0,
+                2, 4, 4, 4
+        ));
+    }
 
 
     private void setEtalonField() {
