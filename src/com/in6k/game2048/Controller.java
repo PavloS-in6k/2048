@@ -114,4 +114,8 @@ public class Controller {
     protected Field getField() {
         return field;
     }
+
+    public int getScore() {
+        return score;
+    }
 }

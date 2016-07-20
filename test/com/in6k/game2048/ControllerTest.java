@@ -9,6 +9,7 @@ import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.equalTo;
 
 public class ControllerTest {
     private Controller controller = new Controller(new Field());
@@ -91,5 +92,13 @@ public class ControllerTest {
                 4, 0, 0, 0
 
         ));
+    }
+
+    @Test
+    public void isScoreAddedRigth() throws Exception {
+        field.getField().get(0).set(2, new Cell(2));
+        field.getField().get(0).set(3, new Cell(2));
+        controller.doSlide(Command.SLIDE_RIGTH);
+        assertThat(controller.getScore(), equalTo(4));
     }
 }
