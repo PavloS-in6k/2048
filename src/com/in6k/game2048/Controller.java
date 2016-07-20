@@ -98,7 +98,8 @@ public class Controller {
 
     public static void transpose(List<List<Cell>> matrixIn) {
         List<List<Cell>> matrixOut = new ArrayList<>();
-        if (!matrixIn.isEmpty()) {            for (int i = 0; i < matrixIn.get(0).size(); i++) {
+        if (!matrixIn.isEmpty()) {
+            for (int i = 0; i < matrixIn.get(0).size(); i++) {
                 List<Cell> col = new ArrayList<>();
                 for (List<Cell> row : matrixIn) {
                     col.add(row.get(i));

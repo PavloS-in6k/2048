@@ -69,7 +69,10 @@ public class Field {
         String delimeter = "\n";
         for (int i = 0; i < FIELD_LENGTH; i++) {
             for (int k = 0; k < FIELD_LENGTH; k++) {
-                fieldViev += field.get(i).get(k).getValue() + "\t";
+                fieldViev += getHighligthForCell(field.get(i).get(k).getValue())
+                        + field.get(i).get(k).getValue()
+                        + Colors.RESET
+                        + "\t";
             }
             fieldViev += delimeter;
         }
@@ -90,8 +93,14 @@ public class Field {
         for (int i = 0; i < FIELD_LENGTH; i++) {
             field.add(new ArrayList<>());
             for (int k = 0; k < FIELD_LENGTH; k++) {
-                field.get(i).add(new Cell(integers.get((i*FIELD_LENGTH)+k)));
+                field.get(i).add(new Cell(integers.get((i * FIELD_LENGTH) + k)));
             }
         }
+    }
+
+    private String getHighligthForCell(int value) {
+        if (value != 0)
+            return Colors.COLOR_MAP.get(value);
+        return "";
     }
 }

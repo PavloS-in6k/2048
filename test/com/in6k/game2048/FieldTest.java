@@ -63,7 +63,6 @@ public class FieldTest {
         ));
     }
 
-
     @Test
     public void isParserFromLinearArrayWorking() throws Exception {
         field.setFieldFromLinearList(
