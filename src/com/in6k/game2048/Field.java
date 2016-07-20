@@ -20,14 +20,6 @@ public class Field {
         generateNewField();
     }
 
-    protected Field(List<List<Cell>> field) {
-        this.field = field;
-    }
-
-    List<List<Cell>> getField() {
-        return this.field;
-    }
-
     public void generateNewField() {
         field.clear();
         for (int i = 0; i < FIELD_LENGTH; i++) {
@@ -82,5 +74,24 @@ public class Field {
             fieldViev += delimeter;
         }
         return fieldViev;
+    }
+
+
+    protected Field(List<List<Cell>> field) {
+        this.field = field;
+    }
+
+    List<List<Cell>> getField() {
+        return this.field;
+    }
+
+    public void setFieldFromLinearList(List<Integer> integers) {
+        field.clear();
+        for (int i = 0; i < FIELD_LENGTH; i++) {
+            field.add(new ArrayList<>());
+            for (int k = 0; k < FIELD_LENGTH; k++) {
+                field.get(i).add(new Cell(integers.get((i*FIELD_LENGTH)+k)));
+            }
+        }
     }
 }

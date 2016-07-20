@@ -72,7 +72,6 @@ public class ControllerTest {
                 0, 0, 0, 0,
                 0, 0, 0, 0,
                 0, 0, 0, 0
-
         ));
     }
 
@@ -90,7 +89,6 @@ public class ControllerTest {
                 0, 0, 0, 0,
                 4, 0, 0, 0,
                 4, 0, 0, 0
-
         ));
     }
 
@@ -112,5 +110,32 @@ public class ControllerTest {
         assertThat(controller.getScore(), equalTo(16));
         controller.doSlide(Command.SLIDE_RIGTH);
         assertThat(controller.getScore(), equalTo(24));
+    }
+
+    @Test
+    public void isLeftSlideWorking() throws Exception {
+        setEtalonField();
+
+        controller.doSlide(Command.SLIDE_LEFT);
+
+        assertThat(controller.getField().getCellsValuesAsList(), contains(
+                4, 0, 0, 0,
+                2, 0, 0, 0,
+                4, 2, 0, 0,
+                4, 0, 0, 0
+        ));
+    }
+
+
+
+    private void setEtalonField() {
+        field.setFieldFromLinearList(
+                Arrays.asList(
+                        0, 0, 2, 2,
+                        0, 2, 0, 0,
+                        0, 4, 2, 0,
+                        2, 0, 0, 2
+                )
+        );
     }
 }

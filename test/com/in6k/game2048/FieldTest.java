@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.core.Is.is;
 
 public class FieldTest {
@@ -40,12 +41,12 @@ public class FieldTest {
         field.setRandom(new RandomGeneratorForTests(0));
         field.addRandomCell();
 
-        assertThat(field.getCellsValuesAsList(), is(Arrays.asList(
+        assertThat(field.getCellsValuesAsList(), contains(
                 2, 0, 0, 0,
                 0, 0, 0, 0,
                 0, 0, 0, 0,
                 0, 0, 0, 0
-        )));
+        ));
     }
 
     @Test
@@ -54,15 +55,31 @@ public class FieldTest {
         field.addRandomCell();
         field.addRandomCell();
 
-        assertThat(field.getCellsValuesAsList(), is(Arrays.asList(
+        assertThat(field.getCellsValuesAsList(), contains(
                 2, 2, 0, 0,
                 0, 0, 0, 0,
                 0, 0, 0, 0,
                 0, 0, 0, 0
-        )));
+        ));
     }
 
-    private boolean isCellNotEmpty(int i, int k) {
-        return field.getField().get(i).get(k).getValue() != 0;
+
+    @Test
+    public void isParserFromLinearArrayWorking() throws Exception {
+        field.setFieldFromLinearList(
+                Arrays.asList(
+                        0, 2, 0, 2,
+                        4, 0, 2, 2,
+                        16, 0, 2, 8,
+                        8, 4, 0, 0
+                )
+        );
+
+        assertThat(field.getCellsValuesAsList(), contains(
+                0, 2, 0, 2,
+                4, 0, 2, 2,
+                16, 0, 2, 8,
+                8, 4, 0, 0
+        ));
     }
 }
