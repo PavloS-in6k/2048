@@ -12,36 +12,32 @@ public class Controller {
     }
 
     public void doSlide(Command command) {
-        if (!isGameOver()) {
-            switch (command) {
-                case SLIDE_LEFT: {
-                    reverseField(field.getField());
-                    slideSide(field.getField());
-                    reverseField(field.getField());
-                    break;
-                }
-                case SLIDE_RIGTH: {
-                    slideSide(field.getField());
-                    break;
-                }
-                case SLIDE_UP: {
-                    transpose(field.getField());
-                    reverseField(field.getField());
-                    slideSide(field.getField());
-                    reverseField(field.getField());
-                    transpose(field.getField());
-                    break;
-                }
-                case SLIDE_DOWN: {
-                    transpose(field.getField());
-                    slideSide(field.getField());
-                    transpose(field.getField());
-                    break;
-                }
+        switch (command) {
+            case SLIDE_LEFT: {
+                reverseField(field.getField());
+                slideSide(field.getField());
+                reverseField(field.getField());
+                break;
             }
-            field.addRandomCell();
-        } else
-            System.out.print("GAMEOVER");
+            case SLIDE_RIGTH: {
+                slideSide(field.getField());
+                break;
+            }
+            case SLIDE_UP: {
+                transpose(field.getField());
+                reverseField(field.getField());
+                slideSide(field.getField());
+                reverseField(field.getField());
+                transpose(field.getField());
+                break;
+            }
+            case SLIDE_DOWN: {
+                transpose(field.getField());
+                slideSide(field.getField());
+                transpose(field.getField());
+                break;
+            }
+        }
     }
 
     public boolean isGameOver() {

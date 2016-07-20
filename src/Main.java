@@ -15,6 +15,7 @@ public class Main {
         String command;
         System.out.print(field.getFieldView());
         while (true) {
+
             System.out.println("Enter w,a,s,or d for slide : \"s\" for down slide, \"w\" - up slide, \"d\" - right slide, " +
                     "\"a\" - left slide or \"e\" for exit: ");
             command = sc.next();
@@ -33,6 +34,7 @@ public class Main {
                 controller.doSlide(Command.SLIDE_RIGTH);
             }
             System.out.print(field.getFieldView());
+
         }
     }
 }

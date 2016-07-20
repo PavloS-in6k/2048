@@ -1,19 +1,31 @@
 package com.in6k.game2048;
 
+import com.in6k.game2048.RandomGenerator.RandomGenerator;
+import com.in6k.game2048.RandomGenerator.RandomGeneratorImpl;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Field {
+    private int score;
     private List<List<Cell>> field;
     public static final int FIELD_LENGTH = 4;
+    private RandomGenerator random = new RandomGeneratorImpl();
+
+    protected void setRandom(RandomGenerator random) {
+        this.random = random;
+    }
 
     public Field() {
         field = new ArrayList<>();
         generateNewField();
     }
 
-    public List<List<Cell>> getField() {
+    protected Field(List<List<Cell>> field) {
+        this.field = field;
+    }
+
+    List<List<Cell>> getField() {
         return this.field;
     }
 
@@ -30,6 +42,15 @@ public class Field {
     }
 
     protected void addRandomCell() {
+        List<Cell> emptyCellList = getEmptyCells();
+        int randomIndex = random.getValue(emptyCellList.size());
+        emptyCellList.get(randomIndex).increment();
+        if (random.getValue(3) == 3) {
+            emptyCellList.get(randomIndex).increment();
+        }
+    }
+
+    protected List<Cell> getEmptyCells() {
         List<Cell> emptyCellList = new ArrayList<>();
         for (List<Cell> cellRow : field) {
             for (Cell cell : cellRow) {
@@ -37,12 +58,19 @@ public class Field {
                     emptyCellList.add(cell);
             }
         }
-        emptyCellList.get(getAnRandomCoordForTable(emptyCellList.size())).increment();
+        return emptyCellList;
     }
 
-    private int getAnRandomCoordForTable(int bound) {
-        Random random = new Random();
-        return random.nextInt(bound);
+    protected List<Integer> getCellsValuesAsList() {
+        List<Integer> resultList = new ArrayList<>();
+
+        for (List<Cell> cellsrow : field) {
+            for (Cell cell : cellsrow) {
+                resultList.add(cell.getValue());
+            }
+        }
+
+        return resultList;
     }
 
     public String getFieldView() {
@@ -56,4 +84,9 @@ public class Field {
         }
         return fieldViev;
     }
+
+    public int getScore() {
+        return score;
+    }
+
 }
