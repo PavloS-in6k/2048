@@ -39,6 +39,7 @@ public class Controller {
                 break;
             }
         }
+        field.addRandomCell();
     }
 
     public boolean isGameOver() {
