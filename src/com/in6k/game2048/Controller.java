@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Controller {
     private Field field;
+    private int score = 0;
 
     public Controller(Field field) {
         this.field = field;
@@ -59,6 +60,7 @@ public class Controller {
     }
 
     protected void slideSide(List<List<Cell>> fieldMatrix) {
+
         for (List<Cell> cellRow : fieldMatrix) {
             slideOneRow(cellRow);
         }
@@ -66,12 +68,18 @@ public class Controller {
 
     protected void slideOneRow(List<Cell> row) {
         moveToBound(row);
+        List<Cell> addedCells = new ArrayList<>();
         for (int i = row.size() - 1; i > 0; i--) {
             if ((row.get(i).getValue() == row.get(i - 1).getValue()) && (row.get(i).getValue() != 0)) {
                 row.get(i - 1).increment();
                 row.set(i, new Cell());
+                addedCells.add(row.get(i - 1));
             }
         }
+        if (addedCells.size() == 1)
+            score += addedCells.get(0).getValue();
+        if (addedCells.size() == 2)
+            score += (addedCells.get(0).getValue() + addedCells.get(1).getValue()) * 2;
         moveToBound(row);
     }
 

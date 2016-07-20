@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Field {
-    private int score;
     private List<List<Cell>> field;
     public static final int FIELD_LENGTH = 4;
     private RandomGenerator random = new RandomGeneratorImpl();
@@ -84,9 +83,4 @@ public class Field {
         }
         return fieldViev;
     }
-
-    public int getScore() {
-        return score;
-    }
-
 }

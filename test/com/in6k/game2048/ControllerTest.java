@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
+import static org.hamcrest.Matchers.contains;
 
 public class ControllerTest {
     private Controller controller = new Controller(new Field());
@@ -30,13 +30,13 @@ public class ControllerTest {
         field.getField().get(0).set(2, new Cell(2));
         field.getField().get(0).set(3, new Cell(2));
         controller.doSlide(Command.SLIDE_RIGTH);
-        assertThat(controller.getField().getCellsValuesAsList(), is(Arrays.asList(
+        assertThat(controller.getField().getCellsValuesAsList(), contains(
                 0, 0, 0, 4,
                 0, 0, 0, 0,
                 0, 0, 0, 0,
                 0, 0, 0, 0
 
-        )));
+        ));
     }
 
     @Test
@@ -48,13 +48,31 @@ public class ControllerTest {
 
         controller.doSlide(Command.SLIDE_RIGTH);
 
-        assertThat(controller.getField().getCellsValuesAsList(), is(Arrays.asList(
+        assertThat(controller.getField().getCellsValuesAsList(), contains(
                 0, 2, 8, 8,
                 0, 0, 0, 0,
                 0, 0, 0, 0,
                 0, 0, 0, 0
 
-        )));
+        ));
+    }
+
+    @Test
+    public void isRow0424SlidedCorrect() throws Exception {
+        field.getField().get(0).set(0, new Cell(0));
+        field.getField().get(0).set(1, new Cell(4));
+        field.getField().get(0).set(2, new Cell(2));
+        field.getField().get(0).set(3, new Cell(4));
+
+        controller.doSlide(Command.SLIDE_RIGTH);
+
+        assertThat(controller.getField().getCellsValuesAsList(), contains(
+                0, 4, 2, 4,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 0, 0, 0
+
+        ));
     }
 
     @Test
@@ -66,12 +84,12 @@ public class ControllerTest {
 
         controller.doSlide(Command.SLIDE_DOWN);
 
-        assertThat(controller.getField().getCellsValuesAsList(), is(Arrays.asList(
+        assertThat(controller.getField().getCellsValuesAsList(), contains(
                 0, 0, 0, 0,
                 0, 0, 0, 0,
                 4, 0, 0, 0,
                 4, 0, 0, 0
 
-        )));
+        ));
     }
 }
