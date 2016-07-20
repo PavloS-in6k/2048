@@ -101,4 +101,16 @@ public class ControllerTest {
         controller.doSlide(Command.SLIDE_RIGTH);
         assertThat(controller.getScore(), equalTo(4));
     }
+
+    @Test
+    public void isScoreWithTwoSlidesMatchedRigth() throws Exception {
+        field.getField().get(0).set(0, new Cell(2));
+        field.getField().get(0).set(1, new Cell(2));
+        field.getField().get(0).set(2, new Cell(2));
+        field.getField().get(0).set(3, new Cell(2));
+        controller.doSlide(Command.SLIDE_RIGTH);
+        assertThat(controller.getScore(), equalTo(16));
+        controller.doSlide(Command.SLIDE_RIGTH);
+        assertThat(controller.getScore(), equalTo(24));
+    }
 }
