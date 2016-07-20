@@ -40,8 +40,38 @@ public class ControllerTest {
     }
 
     @Test
-    public void name() throws Exception {
+    public void isRow2448SlidedCorrect() throws Exception {
+        field.getField().get(0).set(0, new Cell(2));
+        field.getField().get(0).set(1, new Cell(4));
+        field.getField().get(0).set(2, new Cell(4));
+        field.getField().get(0).set(3, new Cell(8));
 
+        controller.doSlide(Command.SLIDE_RIGTH);
 
+        assertThat(controller.getField().getCellsValuesAsList(), is(Arrays.asList(
+                0, 2, 8, 8,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 0, 0, 0
+
+        )));
+    }
+
+    @Test
+    public void isColumn2024SlidedCorrect() throws Exception {
+        field.getField().get(0).set(0, new Cell(2));
+        field.getField().get(1).set(0, new Cell(0));
+        field.getField().get(2).set(0, new Cell(2));
+        field.getField().get(3).set(0, new Cell(4));
+
+        controller.doSlide(Command.SLIDE_DOWN);
+
+        assertThat(controller.getField().getCellsValuesAsList(), is(Arrays.asList(
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                4, 0, 0, 0,
+                4, 0, 0, 0
+
+        )));
     }
 }
